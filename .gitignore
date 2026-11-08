@@ -28,3 +28,7 @@ testkey.keystore
 *.dex
 *.bak
 *.log
+
+# Root build artifacts
+/*.zip
+/*.apk
