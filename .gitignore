@@ -1,0 +1,30 @@
+# Build directories
+build/
+*/build/
+.gradle/
+bin/
+gen/
+
+# Decompiled & temporary working directories
+decoded_*
+decompiled/
+framework_decoded/
+user15_decoded/
+voiceassist_15_decoded/
+framework_magisk_module/
+magisk_module/
+VoiceAssistCTS_module/
+
+# Large raw stock ROM files & System dumps (>50MB)
+*.jar
+VoiceAssistAndroidT*.apk
+MiuiHome.apk
+app-debug-signed.apk
+test_*.apk
+temp_*.apk
+voiceassist_*.apk
+user_*.apk
+testkey.keystore
+*.dex
+*.bak
+*.log

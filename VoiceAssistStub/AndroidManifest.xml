@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.miui.voiceassist"
+    android:versionCode="508001015"
+    android:versionName="8.1.15.3819">
+
+    <permission android:name="com.xiaomi.voiceassistant.permission.VOICE_SERVICE" android:protectionLevel="normal"/>
+    <permission android:name="com.miui.voiceassist.permission.ACCESS_GLOBAL_CONTENT_PROVIDER" android:protectionLevel="normal"/>
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="com.xiaomi.voiceassistant.permission.VOICE_SERVICE"/>
+    <uses-permission android:name="com.miui.voiceassist.permission.ACCESS_GLOBAL_CONTENT_PROVIDER"/>
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:supportsRtl="true">
+
+        <!-- HyperOS XiaoAi & Gesture Line Compatibility Metadata -->
+        <meta-data android:name="xiaoai.supportGestureLineWakeUp" android:value="true"/>
+        <meta-data android:name="xiaoai.ShortcutKeyWakeUpVersion" android:value="2"/>
+        <meta-data android:name="ShortcutKeyWakeUpVersion" android:value="4"/>
+        <meta-data android:name="is_support_long_power_press_key" android:value="true"/>
+        <meta-data android:name="is_support_ai_key_interface" android:value="true"/>
+        <meta-data android:name="xiaoai.supportMiClaw" android:value="true"/>
+        <meta-data android:name="com.xiaomi.voicetrigger.SupportPermissionVoiceService" android:value="true"/>
+        <meta-data android:name="is_super_ai" android:value="true"/>
+        <meta-data android:name="xiaoai.supportSmartAlarmPage" android:value="true"/>
+        <meta-data android:name="xiaoai.supportAiInput" android:value="true"/>
+        <meta-data android:name="xiaoai.supportOneshot" android:value="true"/>
+        <meta-data android:name="xiaoai.supportAIEditorWakeUp" android:value="true"/>
+
+        <!-- Global Content Provider queried by MiuiHome libapp_launcher.so -->
+        <provider
+            android:name="com.xiaomi.voiceassistant.contentprovider.GlobalContentProvider"
+            android:authorities="com.miui.voiceassist.contentprovider.GlobalContentProvider"
+            android:exported="true"/>
+
+        <!-- Core VoiceService triggered by white-bar long press -->
+        <service
+            android:name="com.xiaomi.voiceassistant.VoiceService"
+            android:exported="true"
+            android:foregroundServiceType="specialUse">
+            <intent-filter>
+                <action android:name="android.intent.action.ASSIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.miui.voicetrigger.ACTION_VOICE_TRIGGER_START_VOICEASSIST" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.xiaoai.ACTION_BLUETOOTH_START_VOICEASSIST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.xiaomi.voiceassistant.PermissionVoiceService"
+            android:exported="true"
+            android:permission="com.xiaomi.voiceassistant.permission.VOICE_SERVICE">
+            <intent-filter>
+                <action android:name="com.xiaomi.voiceassistant.ACTION_PERMISSION_VOICE_SERVICE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.xiaomi.voiceassistant.AssistInteractionService"
+            android:exported="true"
+            android:permission="android.permission.BIND_VOICE_INTERACTION">
+            <meta-data
+                android:name="android.voice_interaction"
+                android:resource="@xml/interaction_service" />
+            <intent-filter>
+                <action android:name="android.service.voice.VoiceInteractionService" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.xiaomi.voiceassistant.AssistInteractionSessionService"
+            android:permission="android.permission.BIND_VOICE_INTERACTION" />
+
+        <activity
+            android:name="com.xiaomi.voiceassistant.AiSettings.AiSettingsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.miui.voiceassist.ACTION_AI_BUTTON_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.xiaomi.voiceassistant.settings.GestureLineWakeUpSettingsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.miui.voiceassist.settings.GestureLineWakeUpSettingsActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.xiaomi.voiceassistant.settings.GestureLineWakeUpSettingsActivityV2"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.miui.voiceassist.settings.GestureLineWakeUpSettingsActivityV2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.xiaomi.voiceassistant.NewGuideActivity"
+            android:exported="false" />
+
+    </application>
+</manifest>

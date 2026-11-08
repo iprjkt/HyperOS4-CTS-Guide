@@ -1,0 +1,16 @@
+version: 3.0.3
+apkFileName: VoiceAssistAndroidT.apk
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: 26
+  targetSdkVersion: 33
+versionInfo:
+  versionCode: 508001015
+  versionName: '8.1.15.3819'
+resourcesInfo:
+  packageId: 127
+  keepRawValues: true
+doNotCompress:
+- arsc

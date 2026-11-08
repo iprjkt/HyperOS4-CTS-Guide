@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <!-- Fitur Contextual Search untuk mengaktifkan opsi Circle to Search di Launcher & Settings HyperOS -->
+    <feature name="android.software.contextualsearch" />
+    <feature name="com.google.android.feature.CONTEXTUAL_SEARCH" />
+</permissions>
